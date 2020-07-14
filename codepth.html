@@ -1,0 +1,371 @@
+<html>
+<head>
+<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<style>
+body{
+  margin:0;
+  background-image:linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),url("pen.jpg");
+  background-size:cover;
+  background-repeat:no-repeat;
+}
+@media screen and (min-width: 24.375em){
+  .in{
+    height:30px;
+    width:60%;
+    font-size:15px;
+    border-top:none;
+    border-right:none;
+    border-left:none;
+    margin-left:-15px;
+  }
+  .f1{
+    position:absolute;
+    width:40%;
+    margin-top:10px;
+    color:black;
+    font-size:20px;
+    font-family:sans-serif;
+  } 
+    .g1{
+    font-size:34px;
+  }
+  .form{
+   background-color:white;
+   text-align:center;
+   margin-left:445px;
+   margin-right:445px;
+   height:900px;
+  padding: 10px;
+  box-shadow: 5px 10px 18px #888888;
+  }
+}
+@media screen and (max-width: 24.375em){
+  .in{
+    height:30px;
+    width:100%;
+    font-size:15px;
+    border-top:none;
+    border-right:none;
+    border-left:none;
+  }
+   .form{
+   background-color:white;
+   text-align:center;
+  padding: 10px;
+  box-shadow: 5px 10px 18px #888888;
+  }
+}
+
+@import url("https://fonts.googleapis.com/css?family=Fascinate+Inline&display=swap");
+
+
+* {
+  box-sizing: border-box;
+}
+.treat-button {
+  position:relative;
+  text-align:center;
+  font-family: 'Fascinate Inline', cursive;
+  font-size: 4vmin;
+ 
+  
+  background: linear-gradient(to bottom, #F46001, #E14802);
+  border: none;
+  color: #FFF;
+  border-radius: 2em;
+  padding: .6em 1.5em;
+  overflow: hidden;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  cursor: pointer;
+  z-index: 1;
+  box-shadow: 0 0 1em rgba(255, 255, 255, 0.2);
+  -webkit-transition: box-shadow 0.2s, -webkit-transform 0.1s cubic-bezier(0.5, 0, 0.5, 1);
+  transition: box-shadow 0.2s, -webkit-transform 0.1s cubic-bezier(0.5, 0, 0.5, 1);
+  transition: transform 0.1s cubic-bezier(0.5, 0, 0.5, 1), box-shadow 0.2s;
+  transition: transform 0.1s cubic-bezier(0.5, 0, 0.5, 1), box-shadow 0.2s, -webkit-transform 0.1s cubic-bezier(0.5, 0, 0.5, 1);
+  outline: none;
+}
+.treat-button:hover {
+  box-shadow: 0 0 2em rgba(255, 255, 255, 0.3);
+}
+.treat-button:active {
+  -webkit-transform: scale(0.8) translateY(10%);
+          transform: scale(0.8) translateY(10%);
+  -webkit-transition-timing-function: cubic-bezier(0.5, 0, 0.5, 1);
+          transition-timing-function: cubic-bezier(0.5, 0, 0.5, 1);
+}
+
+.treat {
+  pointer-events: none;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: calc(50% - .5rem);
+  border-radius: 50%;
+  width: 1em;
+  height: 1em;
+  display: -webkit-box;
+  display: flex;
+  
+  font-size: 5vmin;
+  -webkit-transform: translate(calc( var(--x) * 1px ), calc( var(--y) * 1px )) translate(-50%, -50%);
+          transform: translate(calc( var(--x) * 1px ), calc( var(--y) * 1px )) translate(-50%, -50%);
+  pointer-events: none;
+  -webkit-animation: treat-enter 0.1s ease-in backwards, treat-exit 300ms linear calc( (var(--lifetime, 3000) * 1ms) - 300ms) forwards;
+          animation: treat-enter 0.1s ease-in backwards, treat-exit 300ms linear calc( (var(--lifetime, 3000) * 1ms) - 300ms) forwards;
+}
+@-webkit-keyframes treat-enter {
+  from {
+    opacity: 0;
+  }
+}
+@keyframes treat-enter {
+  from {
+    opacity: 0;
+  }
+}
+@-webkit-keyframes treat-exit {
+  to {
+    opacity: 0;
+  }
+}
+@keyframes treat-exit {
+  to {
+    opacity: 0;
+  }
+}
+.treat .inner {
+  -webkit-animation: inner-rotate .6s linear infinite;
+          animation: inner-rotate .6s linear infinite;
+  -webkit-transform: rotate(calc(-1turn * var(--direction) ));
+          transform: rotate(calc(-1turn * var(--direction) ));
+}
+@-webkit-keyframes inner-rotate {
+  to {
+    -webkit-transform: none;
+            transform: none;
+  }
+}
+@keyframes inner-rotate {
+  to {
+    -webkit-transform: none;
+            transform: none;
+  }
+}
+@media screen and (max-width:700px){
+  .treat-button{
+    margin-left:-10px;
+  }
+}
+@media screen and (min-width:700px){
+  .treat-button{
+    margin-left:-10px;
+  }
+}
+</style>
+<body>
+<div class="form">
+<img src="code.jpg" class="im" style="height:200px; width:100%">
+<h1 style="font-family:sans-serif">Register</h1>
+  <form class="f1" name="myForm"  onsubmit="return validateForm()" method="post">
+    <input type="text" placeholder="Full Name" class="in" name="fname" required>
+    <br><br>
+    <label>Gender</label>
+    <input type="radio" name="g1">Male
+    <input type="radio" name="g1">Female<br><br>
+    <input type="email" placeholder="E-MAIL" class="in" name="mail" required ><br><br>
+    <input type="text" placeholder="Mobile Number" class="in" name="mobile" required><br><br>
+    <input type="text" placeholder="College/University" class="in" name="col" required><br><br>
+    <input type="text" placeholder="Course" class="in" name="course" required><br><br>
+    <input type="text" placeholder="Branch" class="in" name="branch" required><br><br>
+    <input type="text" placeholder="Academic Year" class="in" required><br><br>
+    <input type="text" placeholder="Hackerrank Username" class="in" required><br><br>
+    <div class="treat-wrapper" style="position:relative">
+  <center><button class="treat-button">Proceed</button><center>
+</div>
+  </form>
+  </div>
+
+<script>
+console.clear();
+
+let width = window.innerWidth;
+let height = window.innerHeight;
+const body = document.body;
+
+const elButton = document.querySelector(".treat-button");
+const elWrapper = document.querySelector(".treat-wrapper");
+
+function getRandomArbitrary(min, max) {
+  return Math.random() * (max - min) + min;
+}
+
+function getRandomInt(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+const treatmojis = ["🍬", "🍫", "🍭", "🍡", "🍩", "🍪", "🍒"];
+const treats = [];
+const radius = 15;
+
+const Cd = 0.47; // Dimensionless
+const rho = 1.22; // kg / m^3
+const A = Math.PI * radius * radius / 10000; // m^2
+const ag = 9.81; // m / s^2
+const frameRate = 1 / 60;
+
+function createTreat() /* create a treat */{
+  const vx = getRandomArbitrary(-10, 10); // x velocity
+  const vy = getRandomArbitrary(-10, 1); // y velocity
+
+  const el = document.createElement("div");
+  el.className = "treat";
+
+  const inner = document.createElement("span");
+  inner.className = "inner";
+  inner.innerText = treatmojis[getRandomInt(0, treatmojis.length - 1)];
+  el.appendChild(inner);
+
+  elWrapper.appendChild(el);
+
+  const rect = el.getBoundingClientRect();
+
+  const lifetime = getRandomArbitrary(2000, 3000);
+
+  el.style.setProperty("--lifetime", lifetime);
+
+  const treat = {
+    el,
+    absolutePosition: { x: rect.left, y: rect.top },
+    position: { x: rect.left, y: rect.top },
+    velocity: { x: vx, y: vy },
+    mass: 0.1, //kg
+    radius: el.offsetWidth, // 1px = 1cm
+    restitution: -.7,
+
+    lifetime,
+    direction: vx > 0 ? 1 : -1,
+
+    animating: true,
+
+    remove() {
+      this.animating = false;
+      this.el.parentNode.removeChild(this.el);
+    },
+
+    animate() {
+      const treat = this;
+      let Fx =
+      -0.5 *
+      Cd *
+      A *
+      rho *
+      treat.velocity.x *
+      treat.velocity.x *
+      treat.velocity.x /
+      Math.abs(treat.velocity.x);
+      let Fy =
+      -0.5 *
+      Cd *
+      A *
+      rho *
+      treat.velocity.y *
+      treat.velocity.y *
+      treat.velocity.y /
+      Math.abs(treat.velocity.y);
+
+      Fx = isNaN(Fx) ? 0 : Fx;
+      Fy = isNaN(Fy) ? 0 : Fy;
+
+      // Calculate acceleration ( F = ma )
+      var ax = Fx / treat.mass;
+      var ay = ag + Fy / treat.mass;
+      // Integrate to get velocity
+      treat.velocity.x += ax * frameRate;
+      treat.velocity.y += ay * frameRate;
+
+      // Integrate to get position
+      treat.position.x += treat.velocity.x * frameRate * 100;
+      treat.position.y += treat.velocity.y * frameRate * 100;
+
+      treat.checkBounds();
+      treat.update();
+    },
+
+    checkBounds() {
+
+      if (treat.position.y > height - treat.radius) {
+        treat.velocity.y *= treat.restitution;
+        treat.position.y = height - treat.radius;
+      }
+      if (treat.position.x > width - treat.radius) {
+        treat.velocity.x *= treat.restitution;
+        treat.position.x = width - treat.radius;
+        treat.direction = -1;
+      }
+      if (treat.position.x < treat.radius) {
+        treat.velocity.x *= treat.restitution;
+        treat.position.x = treat.radius;
+        treat.direction = 1;
+      }
+
+    },
+
+    update() {
+      const relX = this.position.x - this.absolutePosition.x;
+      const relY = this.position.y - this.absolutePosition.y;
+
+      this.el.style.setProperty("--x", relX);
+      this.el.style.setProperty("--y", relY);
+      this.el.style.setProperty("--direction", this.direction);
+    } };
+
+
+  setTimeout(() => {
+    treat.remove();
+  }, lifetime);
+
+  return treat;
+}
+
+
+function animationLoop() {
+  var i = treats.length;
+  while (i--) {
+    treats[i].animate();
+
+    if (!treats[i].animating) {
+      treats.splice(i, 1);
+    }
+  }
+
+  requestAnimationFrame(animationLoop);
+}
+
+animationLoop();
+
+function addTreats() {
+  //cancelAnimationFrame(frame);
+  if (treats.length > 40) {
+    return;
+  }
+  for (let i = 0; i < 10; i++) {
+    treats.push(createTreat());
+  }
+}
+
+elButton.addEventListener("click", addTreats);
+elButton.click();
+
+window.addEventListener("resize", () => {
+  width = window.innerWidth;
+  height = window.innerHeight;
+});
+</script>
+</body>
+</html>
